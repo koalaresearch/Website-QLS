@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quinta La Sal — Jávea, España</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── CUSTOM PROPERTIES ──────────────────────────── */
+    :root {
+      /* Bases (70%) */
+      --ivory:       #FAF7F2;
+      --arena:       #E8DCCB;
+      --warm-white:  #F2EDE4;
+      --linen:       #D9CFC0;
+
+      /* Naturales (15%) */
+      --pine:        #3D5A47;
+      --sage:        #7A9E82;
+      --olive:       #A3B899;
+      --sandy-mint:  #C8D8BF;
+
+      /* Intensos (10%) */
+      --blue-med:    #2E5F7A;
+      --terracotta:  #C47A5A;
+      --ochre:       #C9A84C;
+      --charcoal:    #2C2C2A;
+
+      /* Semánticos */
+      --bg:          #FAF7F2;
+      --text:        #2C2C2A;
+      --accent:      #3D5A47;
+      --accent-warm: #C47A5A;
+      --dark-bg:     #2C2C2A;
+      --dark-text:   #FAF7F2;
+      --mid:         #E8DCCB;
+
+      --serif:       'Cormorant Garamond', Georgia, serif;
+      --sans:        'Jost', system-ui, sans-serif;
+      --radius:      2px;
+      --transition:  0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* ─── RESET & BASE ───────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── SCROLL ANIMATIONS ──────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s var(--transition), transform 0.8s var(--transition);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ─── NAV ────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 3rem;
+      transition: background 0.5s ease, backdrop-filter 0.5s ease, padding 0.4s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(250, 247, 242, 0.85);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      padding: 1rem 3rem;
+      border-bottom: 1px solid rgba(44, 44, 42, 0.08);
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.65rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--dark-text);
+      transition: color 0.4s ease;
+    }
+
+    nav.scrolled .nav-logo { color: var(--text); }
+
+    .nav-reserve {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dark-text);
+      border: 1px solid rgba(250, 247, 242, 0.6);
+      padding: 0.6rem 1.5rem;
+      transition: all 0.35s ease;
+    }
+
+    nav.scrolled .nav-reserve {
+      color: var(--text);
+      border-color: rgba(44, 44, 42, 0.35);
+    }
+
+    .nav-reserve:hover {
+      background: var(--accent-warm);
+      border-color: var(--accent-warm);
+      color: var(--dark-text) !important;
+    }
+
+    /* ─── HERO ───────────────────────────────────────── */
+    #hero {
+      position: relative;
+      width: 100%;
+      height: 100dvh;
+      min-height: 600px;
+      overflow: hidden;
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      transform: scale(1.04);
+      transition: transform 8s ease-out;
+    }
+
+    .hero-image img {
+      object-position: center 30%;
+    }
+
+    .hero-image.loaded { transform: scale(1); }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(44, 44, 42, 0.15) 0%,
+        rgba(44, 44, 42, 0.08) 40%,
+        rgba(44, 44, 42, 0.55) 100%
+      );
+    }
+
+    .hero-content {
+      position: absolute;
+      bottom: 11%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      width: 90%;
+      max-width: 760px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(250, 247, 242, 0.7);
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--dark-text);
+      letter-spacing: 0.01em;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 3.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(250, 247, 242, 0.55);
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-family: var(--sans);
+      font-weight: 400;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: rgba(250, 247, 242, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-line::after {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(250, 247, 242, 0.85);
+      animation: scrollDrop 2.2s ease-in-out infinite;
+    }
+
+    @keyframes scrollDrop {
+      0%   { top: -100%; }
+      100% { top: 100%; }
+    }
+
+    /* ─── BRAND STATEMENT ────────────────────────────── */
+    #statement {
+      padding: 10rem 2rem;
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .statement-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      margin: 0 auto 2.5rem;
+    }
+
+    .statement-text {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--text);
+      letter-spacing: 0.01em;
+    }
+
+    .statement-text em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .statement-sub {
+      margin-top: 2rem;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 400;
+    }
+
+    /* ─── GALLERY ────────────────────────────────────── */
+    #gallery {
+      padding: 0 2rem 8rem;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .gallery-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(44, 44, 42, 0.1);
+    }
+
+    .section-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .gallery-count {
+      font-family: var(--serif);
+      font-size: 0.9rem;
+      color: rgba(44, 44, 42, 0.4);
+      font-weight: 300;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto;
+      gap: 12px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-item img {
+      height: 114%;
+      margin-top: -7%;
+      will-change: transform;
+      transition: filter 0.6s ease;
+      filter: brightness(0.95) saturate(0.9);
+    }
+
+    .gallery-item:hover img {
+      filter: brightness(1) saturate(1);
+    }
+
+    /* Editorial asymmetric layout */
+    .gi-1 { grid-column: 1 / 8;  grid-row: 1; aspect-ratio: 16/10; }
+    .gi-2 { grid-column: 8 / 13; grid-row: 1; aspect-ratio: 4/5; }
+    .gi-3 { grid-column: 1 / 5;  grid-row: 2; aspect-ratio: 4/5; }
+    .gi-4 { grid-column: 5 / 9;  grid-row: 2; aspect-ratio: 4/5; }
+    .gi-5 { grid-column: 9 / 13; grid-row: 2 / 4; aspect-ratio: 3/5; }
+    .gi-6 { grid-column: 1 / 9;  grid-row: 3; aspect-ratio: 16/7; }
+
+    /* ─── CLUB QUINTA ────────────────────────────────── */
+    #club {
+      background: var(--dark-bg);
+      color: var(--dark-text);
+      padding: 9rem 2rem;
+    }
+
+    .club-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .club-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 6rem;
+      align-items: end;
+    }
+
+    .club-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+      font-weight: 500;
+      display: block;
+      margin-bottom: 1.2rem;
+    }
+
+    .club-title {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--dark-text);
+    }
+
+    .club-title em {
+      font-style: italic;
+      color: var(--accent-warm);
+    }
+
+    .club-desc {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      line-height: 1.9;
+      color: rgba(250, 247, 242, 0.78);
+      font-weight: 300;
+      align-self: end;
+    }
+
+    .club-pillars {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .pillar {
+      padding: 2.5rem;
+      border-left: 1px solid rgba(250, 247, 242, 0.08);
+      transition: background 0.4s ease;
+    }
+
+    .pillar:first-child { border-left: none; }
+
+    .pillar:hover { background: rgba(250, 247, 242, 0.03); }
+
+    .pillar-num {
+      font-family: var(--serif);
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--accent-warm);
+      opacity: 0.5;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .pillar-title {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--dark-text);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.02em;
+    }
+
+    .pillar-text {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      line-height: 1.85;
+      color: rgba(250, 247, 242, 0.68);
+      font-weight: 300;
+    }
+
+    /* ─── LOCATION ───────────────────────────────────── */
+    #location {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 85vh;
+    }
+
+    .location-text {
+      background: var(--text);
+      color: var(--dark-text);
+      padding: 8rem 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .location-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+      font-weight: 500;
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+
+    .location-title {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--dark-text);
+      margin-bottom: 2rem;
+    }
+
+    .location-title em {
+      font-style: italic;
+      color: var(--accent-warm);
+    }
+
+    .location-body {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      line-height: 2;
+      color: rgba(250, 247, 242, 0.78);
+      font-weight: 300;
+      max-width: 380px;
+      margin-bottom: 3rem;
+    }
+
+    .location-facts {
+      display: flex;
+      gap: 3rem;
+    }
+
+    .fact-item {}
+
+    .fact-value {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--dark-text);
+      line-height: 1;
+      display: block;
+    }
+
+    .fact-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(250, 247, 242, 0.62);
+      font-weight: 400;
+      margin-top: 0.3rem;
+      display: block;
+    }
+
+    .location-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .location-image img {
+      transition: transform 10s ease;
+    }
+
+    .location-image:hover img { transform: scale(1.04); }
+
+    /* ─── AMENITIES ──────────────────────────────────── */
+    #amenities {
+      padding: 9rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .amenities-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .amenities-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      line-height: 1.2;
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .amenity-item {
+      padding: 2.5rem 2rem;
+      border-top: 1px solid rgba(44, 44, 42, 0.1);
+      border-right: 1px solid rgba(44, 44, 42, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 120px;
+      transition: background 0.3s ease;
+    }
+
+    .amenity-item:nth-child(4n) { border-right: none; }
+    .amenity-item:nth-child(n+5) { border-top: 1px solid rgba(44, 44, 42, 0.1); }
+
+    .amenity-item {
+      position: relative;
+    }
+
+    .amenity-item::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 0;
+      width: 0; height: 1px;
+      background: var(--accent);
+      transition: width 0.4s ease;
+    }
+
+    .amenity-item:hover::before { width: 100%; }
+    .amenity-item:hover { background: rgba(61, 90, 71, 0.03); }
+
+    .amenity-name {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: var(--text);
+      display: block;
+      letter-spacing: 0.01em;
+    }
+
+    .amenity-sub {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      color: rgba(44, 44, 42, 0.38);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 0.35rem;
+    }
+
+    /* ─── FINAL CTA ──────────────────────────────────── */
+    #reserve {
+      background: var(--text);
+      color: var(--dark-text);
+      padding: 9rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #reserve::before {
+      content: 'QUINTA LA SAL';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--serif);
+      font-size: clamp(8rem, 18vw, 22rem);
+      font-weight: 300;
+      color: rgba(250, 247, 242, 0.02);
+      letter-spacing: 0.2em;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .reserve-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .reserve-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+      font-weight: 500;
+      display: block;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .reserve-title {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      text-align: center;
+      color: var(--dark-text);
+      margin-bottom: 3.5rem;
+    }
+
+    .reserve-title em {
+      font-style: italic;
+      color: var(--accent-warm);
+    }
+
+    .reserve-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-field.full { grid-column: 1 / -1; }
+
+    .form-field label {
+      font-family: var(--sans);
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(250, 247, 242, 0.68);
+      font-weight: 500;
+    }
+
+    .form-field input,
+    .form-field select {
+      background: rgba(250, 247, 242, 0.06);
+      border: 1px solid rgba(250, 247, 242, 0.12);
+      color: var(--dark-text);
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 300;
+      padding: 0.85rem 1rem;
+      outline: none;
+      border-radius: var(--radius);
+      transition: border-color 0.3s ease, background 0.3s ease;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-field input::placeholder { color: rgba(250, 247, 242, 0.25); }
+
+    .form-field input:focus,
+    .form-field select:focus {
+      border-color: var(--accent-warm);
+      background: rgba(250, 247, 242, 0.09);
+    }
+
+    .form-field select option { background: var(--dark-bg); }
+
+    .date-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      grid-column: 1 / -1;
+    }
+
+    .reserve-btn {
+      margin-top: 1.5rem;
+      width: 100%;
+      grid-column: 1 / -1;
+      background: var(--accent-warm);
+      color: var(--dark-text);
+      border: none;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      padding: 1.2rem 2rem;
+      cursor: pointer;
+      transition: all 0.35s ease;
+      border-radius: var(--radius);
+    }
+
+    .reserve-btn:hover {
+      background: var(--dark-text);
+      color: var(--text);
+      letter-spacing: 0.35em;
+    }
+
+    .reserve-btn-secondary {
+      margin-top: 0.75rem;
+      width: 100%;
+      grid-column: 1 / -1;
+      background: transparent;
+      color: rgba(250, 247, 242, 0.58);
+      border: 1px solid rgba(250, 247, 242, 0.18);
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      transition: all 0.35s ease;
+      border-radius: var(--radius);
+    }
+
+    .reserve-btn-secondary:hover {
+      border-color: rgba(250, 247, 242, 0.45);
+      color: var(--dark-text);
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────── */
+    footer {
+      background: var(--dark-bg);
+      color: var(--dark-text);
+      padding: 3.5rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 2rem;
+      border-top: 1px solid rgba(250, 247, 242, 0.06);
+    }
+
+    .footer-address {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      line-height: 1.7;
+      color: rgba(250, 247, 242, 0.58);
+      font-weight: 300;
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-align: center;
+      color: var(--dark-text);
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .footer-socials a {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(250, 247, 242, 0.58);
+      font-weight: 400;
+      transition: color 0.3s ease;
+    }
+
+    .footer-socials a:hover { color: var(--accent-warm); }
+
+    .footer-copy {
+      grid-column: 1 / -1;
+      text-align: center;
+      font-family: var(--sans);
+      font-size: 0.62rem;
+      color: rgba(250, 247, 242, 0.38);
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      margin-top: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(250, 247, 242, 0.05);
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .club-pillars { grid-template-columns: repeat(2, 1fr); }
+      .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .amenity-item:nth-child(4n) { border-right: 1px solid rgba(44, 44, 42, 0.1); }
+      .amenity-item:nth-child(2n) { border-right: none; }
+      .benefits-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      nav.scrolled { padding: 0.9rem 1.5rem; }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      .gi-1, .gi-2, .gi-3, .gi-4, .gi-5, .gi-6 {
+        grid-column: auto;
+        grid-row: auto;
+        aspect-ratio: 4/3;
+      }
+      .gi-1 { grid-column: 1 / -1; aspect-ratio: 16/9; }
+
+      .club-header { grid-template-columns: 1fr; gap: 1.5rem; }
+      .club-pillars { grid-template-columns: 1fr 1fr; }
+      .pillar { padding: 2rem 1.25rem; }
+
+      #location { grid-template-columns: 1fr; }
+      .location-text { padding: 5rem 2rem; }
+      .location-image { aspect-ratio: 4/3; }
+
+      .benefits-grid { grid-template-columns: 1fr 1fr; }
+      .benefits-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+
+      .reserve-form { grid-template-columns: 1fr; }
+      .date-group { grid-template-columns: 1fr; grid-column: auto; }
+      .form-field.full { grid-column: auto; }
+
+      footer { grid-template-columns: 1fr; text-align: center; }
+      .footer-socials { justify-content: center; }
+
+      #statement  { padding: 6rem 2rem; }
+      #gallery    { padding-bottom: 5rem; }
+      #club       { padding: 5rem 2rem; }
+      #amenities  { padding: 5rem 2rem; }
+      #reserve    { padding: 5rem 2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .club-pillars { grid-template-columns: 1fr; }
+      .amenities-grid { grid-template-columns: 1fr; }
+      .amenity-item:nth-child(2n) { border-right: 1px solid rgba(44, 44, 42, 0.1); }
+      .amenity-item { border-right: none !important; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gi-1, .gi-2, .gi-3, .gi-4, .gi-5, .gi-6 {
+        grid-column: auto;
+        aspect-ratio: 4/3;
+      }
+      .location-facts { flex-wrap: wrap; gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ───────────────────────────────────────────────────
+       NAV
+  ─────────────────────────────────────────────────── -->
+  <nav id="main-nav" role="navigation" aria-label="Navegación principal">
+    <a href="#" class="nav-logo" aria-label="Quinta La Sal — inicio">Quinta La Sal</a>
+    <a href="#reserve" class="nav-reserve" aria-label="Reserva tu estancia">Reservar</a>
+  </nav>
+
+
+  <!-- ───────────────────────────────────────────────────
+       HERO
+  ─────────────────────────────────────────────────── -->
+  <section id="hero" aria-label="Bienvenido a Quinta La Sal">
+    <div class="hero-image" id="hero-image">
+      <img
+        src="images/12.webp"
+        alt="Villa Quinta La Sal con vistas al Mediterráneo"
+        fetchpriority="high"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <span class="hero-eyebrow">Jávea · Costa Blanca · Balcón del Mar</span>
+      <h1 class="hero-headline">
+        Refugio mediterráneo<br><em>entre pinos y el mar</em>
+      </h1>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="scroll-line"></div>
+      <span>Descubrir</span>
+    </div>
+  </section>
+
+
+  <!-- ───────────────────────────────────────────────────
+       BRAND STATEMENT
+  ─────────────────────────────────────────────────── -->
+  <section id="statement" aria-label="Nuestra filosofía">
+    <div class="statement-rule reveal"></div>
+    <p class="statement-text reveal reveal-delay-1">
+      Quinta La Sal no es un hotel.<br>
+      Es un <em>lugar con intención</em> — sin prisa, profundamente privado,<br>
+      moldeado por la luz del Mediterráneo.
+    </p>
+    <p class="statement-sub reveal reveal-delay-2">Jávea · Costa Blanca · Balcón del Mar</p>
+  </section>
+
+
+  <!-- ───────────────────────────────────────────────────
+       GALLERY
+  ─────────────────────────────────────────────────── -->
+  <section id="gallery" aria-label="Fotografía editorial">
+    <div class="gallery-header reveal">
+      <span class="section-label">La propiedad</span>
+      <span class="gallery-count">01 — 06</span>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item gi-1 reveal">
+        <img
+          src="images/5.webp"
+          alt="Piscina y villa de Quinta La Sal"
+          loading="lazy"
+        />
+      </div>
+      <div class="gallery-item gi-2 reveal reveal-delay-1">
+        <img
+          src="images/11.webp"
+          alt="Entrada con puerta azul arqueada"
+          loading="lazy"
+        />
+      </div>
+      <div class="gallery-item gi-3 reveal reveal-delay-2">
+        <img
+          src="images/1.webp"
+          alt="Interior sala mediterránea"
+          loading="lazy"
+        />
+      </div>
+      <div class="gallery-item gi-4 reveal reveal-delay-3">
+        <img
+          src="images/9.webp"
+          alt="Terraza privada con sillones azules"
+          loading="lazy"
+        />
+      </div>
+      <div class="gallery-item gi-5 reveal reveal-delay-4">
+        <img
+          src="images/4.webp"
+          alt="Zona de descanso exterior al atardecer"
+          loading="lazy"
+        />
+      </div>
+      <div class="gallery-item gi-6 reveal reveal-delay-5">
+        <img
+          src="images/2.webp"
+          alt="Jardín visto a través del arco de la villa"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ───────────────────────────────────────────────────
+       CLUB QUINTA
+  ─────────────────────────────────────────────────── -->
+  <section id="club" aria-label="Membresía Club La Sal">
+    <div class="club-inner">
+      <div class="club-header">
+        <div class="reveal">
+          <span class="club-label">Para quienes regresan</span>
+          <h2 class="club-title">
+            Club<br><em>La Sal</em>
+          </h2>
+        </div>
+        <p class="club-desc reveal reveal-delay-2">
+          Para quienes han vuelto — o saben que volverán. Club La Sal es nuestra forma de decir que te hemos guardado un sitio.
+        </p>
+      </div>
+
+      <div class="club-pillars">
+        <div class="pillar reveal">
+          <span class="pillar-num">01</span>
+          <h3 class="pillar-title">Prioridad Silenciosa</h3>
+          <p class="pillar-text">Las habitaciones de temporada se reservan para ti antes de abrirse al mundo. Tu estancia empieza desde el primer mensaje.</p>
+        </div>
+        <div class="pillar reveal reveal-delay-1">
+          <span class="pillar-num">02</span>
+          <h3 class="pillar-title">Preferencias Vivas</h3>
+          <p class="pillar-text">Tus rituales, tus horas, tus pequeñas certezas, guardadas con cuidado desde la primera vez que cruzaste la puerta.</p>
+        </div>
+        <div class="pillar reveal reveal-delay-2">
+          <span class="pillar-num">03</span>
+          <h3 class="pillar-title">Momentos Curados</h3>
+          <p class="pillar-text">Desde uniones íntimas y aniversarios hasta cenas privadas al atardecer. Acceso fuera de temporada y experiencias costeras a medida, para convertir cada celebración en un legado personal, solo para miembros.</p>
+        </div>
+        <div class="pillar reveal reveal-delay-3">
+          <span class="pillar-num">04</span>
+          <h3 class="pillar-title">La Mesa Larga</h3>
+          <p class="pillar-text">Encuentro anual de los huéspedes más cercanos a Quinta La Sal — una cena íntima que celebra la comunidad que nuestra propiedad ha reunido en silencio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- ───────────────────────────────────────────────────
+       LOCATION
+  ─────────────────────────────────────────────────── -->
+  <section id="location" aria-label="Entorno de Jávea">
+    <div class="location-text">
+      <span class="location-label reveal">El entorno</span>
+      <h2 class="location-title reveal reveal-delay-1">
+        Jávea —<br>donde el tiempo<br><em>se detiene</em>
+      </h2>
+      <p class="location-body reveal reveal-delay-2">
+        Entre el Cap de Sant Antoni y el Parque Natural del Montgó, Jávea es uno de los pueblos costeros más silenciosamente bellos de España. Tres playas distintas, agua cristalina y un casco antiguo que ha resistido lo ordinario. Quinta La Sal se alza sobre todo ello — privada, elevada, frente al mar.
+      </p>
+      <div class="location-facts reveal reveal-delay-3">
+        <div class="fact-item">
+          <span class="fact-value">300+</span>
+          <span class="fact-label">Días de sol</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-value">4 km</span>
+          <span class="fact-label">Al casco antiguo</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-value">95 km</span>
+          <span class="fact-label">Desde Valencia</span>
+        </div>
+      </div>
+    </div>
+    <div class="location-image">
+      <img
+        src="images/3.webp"
+        alt="Villa Quinta La Sal entre pinos mediterráneos"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+
+  <!-- ───────────────────────────────────────────────────
+       AMENITIES
+  ─────────────────────────────────────────────────── -->
+  <section id="amenities" aria-label="Servicios de la propiedad">
+    <div class="amenities-header reveal">
+      <span class="section-label" style="display:block; margin-bottom:1.5rem;">La propiedad</span>
+      <h2 class="amenities-title">Sin lo que sobra.<br>Con todo lo que importa.</h2>
+    </div>
+
+    <div class="amenities-grid">
+      <div class="amenity-item reveal">
+        <span class="amenity-name">Dos piscinas</span>
+        <span class="amenity-sub">Piscina Sol · Piscina Calma · Dos ritmos</span>
+      </div>
+      <div class="amenity-item reveal reveal-delay-1">
+        <span class="amenity-name">Terraza exterior</span>
+        <span class="amenity-sub">Según estancia · Jardín privado</span>
+      </div>
+      <div class="amenity-item reveal reveal-delay-2">
+        <span class="amenity-name">Zona de estar luminosa</span>
+        <span class="amenity-sub">Luz natural · Espacios abiertos</span>
+      </div>
+      <div class="amenity-item reveal">
+        <span class="amenity-name">Cocina equipada</span>
+        <span class="amenity-sub">Completa · Lista para cocinar</span>
+      </div>
+      <div class="amenity-item reveal reveal-delay-1">
+        <span class="amenity-name">Aire acondicionado</span>
+        <span class="amenity-sub">En todas las estancias</span>
+      </div>
+      <div class="amenity-item reveal reveal-delay-2">
+        <span class="amenity-name">Caja fuerte</span>
+        <span class="amenity-sub">En la habitación · Privacidad total</span>
+      </div>
+      <div class="amenity-item reveal reveal-delay-3">
+        <span class="amenity-name">WiFi en todo el alojamiento</span>
+        <span class="amenity-sub">Alta velocidad · Sin interrupciones</span>
+      </div>
+      <div class="amenity-item reveal reveal-delay-4">
+        <span class="amenity-name">Check-in autónomo 24/7</span>
+        <span class="amenity-sub">Estamos disponibles siempre que nos necesites</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ───────────────────────────────────────────────────
+       FINAL CTA / FORM
+  ─────────────────────────────────────────────────── -->
+  <section id="reserve" aria-label="Solicitar disponibilidad">
+    <div class="reserve-inner">
+      <span class="reserve-label reveal">Comienza tu estancia</span>
+      <h2 class="reserve-title reveal reveal-delay-1">
+        Solicita<br><em>Disponibilidad</em>
+      </h2>
+
+      <form class="reserve-form reveal reveal-delay-2" action="#" method="post" novalidate aria-label="Formulario de consulta de reserva">
+
+        <div class="form-field">
+          <label for="f-name">Nombre completo</label>
+          <input type="text" id="f-name" name="name" placeholder="Tu nombre" autocomplete="name" required />
+        </div>
+
+        <div class="form-field">
+          <label for="f-email">Correo electrónico</label>
+          <input type="email" id="f-email" name="email" placeholder="tu@correo.com" autocomplete="email" required />
+        </div>
+
+        <div class="date-group">
+          <div class="form-field">
+            <label for="f-checkin">Llegada</label>
+            <input type="date" id="f-checkin" name="checkin" required />
+          </div>
+          <div class="form-field">
+            <label for="f-checkout">Salida</label>
+            <input type="date" id="f-checkout" name="checkout" required />
+          </div>
+        </div>
+
+        <div class="form-field full">
+          <label for="f-guests">Número de huéspedes</label>
+          <select id="f-guests" name="guests" required>
+            <option value="" disabled selected>Selecciona huéspedes</option>
+            <option value="1">1 huésped</option>
+            <option value="2">2 huéspedes</option>
+            <option value="3">3 huéspedes</option>
+            <option value="4">4 huéspedes</option>
+            <option value="5">5 o más</option>
+          </select>
+        </div>
+
+        <button type="submit" class="reserve-btn">
+          Empieza tu estancia
+        </button>
+        <button type="button" class="reserve-btn-secondary">
+          Consulta fechas disponibles
+        </button>
+
+      </form>
+    </div>
+  </section>
+
+
+  <!-- ───────────────────────────────────────────────────
+       FOOTER
+  ─────────────────────────────────────────────────── -->
+  <footer role="contentinfo">
+    <address class="footer-address">
+      Quinta La Sal<br>
+      Partida Portichol, s/n<br>
+      03730 Jávea (Xàbia), Alicante<br>
+      España · +34 965 XX XX XX
+    </address>
+
+    <div class="footer-logo" aria-label="Quinta La Sal">Quinta La Sal</div>
+
+    <nav class="footer-socials" aria-label="Redes sociales">
+      <a href="#" aria-label="Instagram">Instagram</a>
+      <a href="#" aria-label="Pinterest">Pinterest</a>
+      <a href="#" aria-label="Contacto por correo">Contacto</a>
+    </nav>
+
+    <p class="footer-copy">
+      &copy; 2026 Quinta La Sal — Todos los derechos reservados.
+    </p>
+  </footer>
+
+
+  <!-- ───────────────────────────────────────────────────
+       JAVASCRIPT
+  ─────────────────────────────────────────────────── -->
+  <script>
+    'use strict';
+
+    /* ── NAV SCROLL EFFECT ─────────────────────────── */
+    const nav = document.getElementById('main-nav');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      nav.classList.toggle('scrolled', y > 60);
+      lastScroll = y;
+    }, { passive: true });
+
+
+    /* ── HERO IMAGE LOADED ─────────────────────────── */
+    const heroImg = document.getElementById('hero-image');
+    requestAnimationFrame(() => {
+      setTimeout(() => heroImg.classList.add('loaded'), 100);
+    });
+
+
+    /* ── INTERSECTION OBSERVER — REVEAL ────────────── */
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+
+
+    /* ── BENEFIT CARDS — TOGGLE ────────────────────── */
+    const benefitCards = document.querySelectorAll('.benefit-card');
+
+    function closeAllBenefits(except) {
+      benefitCards.forEach(card => {
+        if (card !== except) {
+          card.classList.remove('active');
+          card.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    benefitCards.forEach(card => {
+      function toggleCard() {
+        const isActive = card.classList.contains('active');
+        closeAllBenefits(card);
+        card.classList.toggle('active', !isActive);
+        card.setAttribute('aria-expanded', String(!isActive));
+      }
+
+      card.addEventListener('click', toggleCard);
+
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleCard();
+        }
+      });
+    });
+
+
+    /* ── FORM — BASIC DATE VALIDATION ─────────────── */
+    const form = document.querySelector('.reserve-form');
+    const checkin  = document.getElementById('f-checkin');
+    const checkout = document.getElementById('f-checkout');
+
+    // Set min date to today
+    const today = new Date().toISOString().split('T')[0];
+    checkin.min  = today;
+    checkout.min = today;
+
+    checkin.addEventListener('change', () => {
+      checkout.min = checkin.value;
+      if (checkout.value && checkout.value <= checkin.value) {
+        checkout.value = '';
+      }
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('.reserve-btn');
+      btn.textContent = 'Nos pondremos en contacto pronto';
+      btn.style.background = 'rgba(247,244,239,0.12)';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = 'Empieza tu estancia';
+        btn.style.background = '';
+        btn.disabled = false;
+        form.reset();
+      }, 5000);
+    });
+
+
+    /* ── GALLERY PARALLAX ──────────────────────────── */
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      const STRENGTH    = 0.05;   // px de movimiento por px de distancia al centro
+      const LERP_SCROLL = 0.07;   // suavidad del parallax (menor = más suave)
+      const LERP_HOVER  = 0.09;   // suavidad del scale en hover
+
+      const state = new Map();
+
+      galleryItems.forEach(item => {
+        const img = item.querySelector('img');
+        if (!img) return;
+        state.set(img, { pyT: 0, pyC: 0, scT: 1, scC: 1 });
+        item.addEventListener('mouseenter', () => state.get(img).scT = 1.04);
+        item.addEventListener('mouseleave', () => state.get(img).scT = 1);
+      });
+
+      function lerp(a, b, t) { return a + (b - a) * t; }
+
+      function tickParallax() {
+        const vh = window.innerHeight;
+        state.forEach((s, img) => {
+          const rect   = img.closest('.gallery-item').getBoundingClientRect();
+          const offset = (rect.top + rect.height / 2 - vh / 2) * STRENGTH;
+          s.pyT = offset;
+          s.pyC = lerp(s.pyC, s.pyT, LERP_SCROLL);
+          s.scC = lerp(s.scC, s.scT, LERP_HOVER);
+          img.style.transform =
+            `translateY(${s.pyC.toFixed(2)}px) scale(${s.scC.toFixed(4)})`;
+        });
+        requestAnimationFrame(tickParallax);
+      }
+
+      requestAnimationFrame(tickParallax);
+    }
+
+
+    /* ── SMOOTH SCROLL ANCHOR LINKS ────────────────── */
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+
+</body>
+</html>
