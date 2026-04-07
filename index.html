@@ -217,8 +217,9 @@
       font-size: clamp(3rem, 8vw, 6.5rem);
       font-weight: 300;
       line-height: 1.05;
-      color: var(--dark-text);
+      color: #ffffff;
       letter-spacing: 0.01em;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.4);
     }
 
     .hero-headline em {
@@ -231,11 +232,12 @@
       font-size: clamp(0.78rem, 1.2vw, 0.9rem);
       font-weight: 300;
       line-height: 1.7;
-      color: rgba(250, 247, 242, 0.72);
+      color: rgba(255, 255, 255, 0.8);
       margin-top: 1.5rem;
       max-width: 520px;
       margin-left: auto;
       margin-right: auto;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.4);
     }
 
     .hero-ctas {
@@ -603,22 +605,19 @@
 
     /* ─── CLUB QUINTA ────────────────────────────────── */
     #club {
-      background: var(--dark-bg);
-      color: var(--dark-text);
+      background: #1a1610;
+      color: #f5f0e8;
       padding: 9rem 2rem;
     }
 
     .club-inner {
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
     .club-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
+      max-width: 680px;
       margin-bottom: 6rem;
-      align-items: end;
     }
 
     .club-label {
@@ -626,7 +625,7 @@
       font-size: 0.65rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--accent-warm);
+      color: #c9a96e;
       font-weight: 500;
       display: block;
       margin-bottom: 1.2rem;
@@ -637,72 +636,78 @@
       font-size: clamp(2.2rem, 5vw, 4rem);
       font-weight: 300;
       line-height: 1.1;
-      color: var(--dark-text);
+      color: #f5f0e8;
+      margin-bottom: 1rem;
     }
 
-    .club-title em {
+    .club-subtitle {
+      font-family: var(--serif);
       font-style: italic;
-      color: var(--accent-warm);
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: #c9a96e;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
     }
 
     .club-desc {
-      font-family: var(--sans);
-      font-size: 0.85rem;
-      line-height: 1.9;
-      color: rgba(250, 247, 242, 0.78);
+      color: rgba(245, 240, 232, 0.65);
       font-weight: 300;
-      align-self: end;
     }
 
-    .club-pillars {
+    .club-benefits {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: 1fr 1fr;
       gap: 0;
     }
 
-    .pillar {
-      padding: 2.5rem;
-      border-left: 1px solid rgba(250, 247, 242, 0.08);
-      transition: background 0.4s ease;
+    .benefit {
+      padding: 3.5rem 3rem 3.5rem 0;
+      border-top: 1px solid rgba(245, 240, 232, 0.1);
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 2rem;
+      align-items: start;
     }
 
-    .pillar:first-child { border-left: none; }
-
-    .pillar:hover { background: rgba(250, 247, 242, 0.03); }
-
-    .pillar-num {
-      font-size: 1.6rem;
-      color: var(--accent-warm);
-      opacity: 0.75;
-      line-height: 1;
-      margin-bottom: 1.5rem;
-      display: block;
+    .benefit:nth-child(even) {
+      padding-left: 3rem;
+      padding-right: 0;
+      border-left: 1px solid rgba(245, 240, 232, 0.1);
     }
 
-    .club-divider {
+    .benefit-num {
       display: flex;
-      gap: 1rem;
-      align-items: center;
-      margin-bottom: 4rem;
-      color: var(--accent-warm);
-      font-size: 0.9rem;
-      opacity: 0.5;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.2rem;
+      padding-top: 0.15rem;
     }
 
-    .pillar-title {
+    .benefit-star {
+      color: #c9a96e;
+      font-size: 0.85rem;
+      line-height: 1;
+    }
+
+    .benefit-n {
       font-family: var(--serif);
-      font-size: 1.25rem;
-      font-weight: 400;
-      color: var(--dark-text);
-      margin-bottom: 0.75rem;
-      letter-spacing: 0.02em;
+      font-size: 3rem;
+      font-weight: 300;
+      color: #8a7a6a;
+      line-height: 1;
     }
 
-    .pillar-text {
-      font-family: var(--sans);
-      font-size: 0.78rem;
-      line-height: 1.85;
-      color: rgba(250, 247, 242, 0.68);
+    .benefit-title {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #f5f0e8;
+      margin-bottom: 0.6rem;
+    }
+
+    .benefit p {
+      color: rgba(245, 240, 232, 0.62);
       font-weight: 300;
     }
 
@@ -1120,9 +1125,9 @@
       }
       .gi-1 { grid-column: 1 / -1; aspect-ratio: 16/9; }
 
-      .club-header { grid-template-columns: 1fr; gap: 1.5rem; }
-      .club-pillars { grid-template-columns: 1fr 1fr; }
-      .pillar { padding: 2rem 1.25rem; }
+      .club-benefits { grid-template-columns: 1fr 1fr; }
+      .benefit { padding: 2.5rem 1.5rem 2.5rem 0; grid-template-columns: 70px 1fr; }
+      .benefit:nth-child(even) { padding-left: 1.5rem; }
 
       #location { grid-template-columns: 1fr; }
       .location-text { padding: 5rem 2rem; }
@@ -1152,7 +1157,8 @@
     }
 
     @media (max-width: 480px) {
-      .club-pillars { grid-template-columns: 1fr; }
+      .club-benefits { grid-template-columns: 1fr; }
+      .benefit:nth-child(even) { border-left: none; padding-left: 0; }
       .amenities-grid { grid-template-columns: 1fr; }
       .amenity-item:nth-child(2n) { border-right: 1px solid rgba(44, 44, 42, 0.1); }
       .amenity-item { border-right: none !important; }
@@ -1383,42 +1389,55 @@
   ─────────────────────────────────────────────────── -->
   <section id="club" aria-label="Membresía Club La Sal">
     <div class="club-inner">
-      <div class="club-header">
-        <div class="reveal">
-          <span class="club-label">Para quienes regresan</span>
-          <h2 class="club-title">
-            Club<br><em>La Sal</em>
-          </h2>
-        </div>
-        <p class="club-desc reveal reveal-delay-2">
-          Para quienes han vuelto — o saben que volverán. Club La Sal es nuestra forma de decir que te hemos guardado un sitio.
-        </p>
+      <div class="club-header reveal">
+        <span class="club-label">Membresía</span>
+        <h2 class="club-title">Club La Sal</h2>
+        <p class="club-subtitle">Solo para quienes ya conocen el camino de vuelta.</p>
+        <p class="club-desc">Una membresía pensada para huéspedes que repiten. Sin formularios, sin puntos. Solo beneficios reales para quienes han elegido volver.</p>
       </div>
 
-      <div class="club-divider reveal" aria-hidden="true">
-        <span>✦</span><span>✧</span><span>◆</span><span>◇</span>
-      </div>
-
-      <div class="club-pillars">
-        <div class="pillar reveal">
-          <span class="pillar-num" aria-hidden="true">✦</span>
-          <h3 class="pillar-title">Prioridad Silenciosa</h3>
-          <p class="pillar-text">Las habitaciones de temporada se reservan para ti antes de abrirse al mundo. Tu estancia empieza desde el primer mensaje.</p>
+      <div class="club-benefits">
+        <div class="benefit reveal">
+          <div class="benefit-num"><span class="benefit-star">✦</span><span class="benefit-n">01</span></div>
+          <div class="benefit-body">
+            <h3 class="benefit-title">Reserva anticipada</h3>
+            <p>Las fechas de verano se abren para ti antes que para nadie. En temporada alta, tu sitio ya está guardado.</p>
+          </div>
         </div>
-        <div class="pillar reveal reveal-delay-1">
-          <span class="pillar-num" aria-hidden="true">✧</span>
-          <h3 class="pillar-title">Preferencias Vivas</h3>
-          <p class="pillar-text">Tus rituales, tus horas, tus pequeñas certezas, guardadas con cuidado desde la primera vez que cruzaste la puerta.</p>
+        <div class="benefit reveal reveal-delay-1">
+          <div class="benefit-num"><span class="benefit-star">✦</span><span class="benefit-n">02</span></div>
+          <div class="benefit-body">
+            <h3 class="benefit-title">Desayuno en terraza</h3>
+            <p>Cada mañana, servido donde más te guste. En tu terraza privada, entre los pinos, sin horarios estrictos.</p>
+          </div>
         </div>
-        <div class="pillar reveal reveal-delay-2">
-          <span class="pillar-num" aria-hidden="true">◆</span>
-          <h3 class="pillar-title">Momentos Curados</h3>
-          <p class="pillar-text">Desde uniones íntimas y aniversarios hasta cenas privadas al atardecer. Acceso fuera de temporada y experiencias costeras a medida, para convertir cada celebración en un legado personal, solo para miembros.</p>
+        <div class="benefit reveal">
+          <div class="benefit-num"><span class="benefit-star">✦</span><span class="benefit-n">03</span></div>
+          <div class="benefit-body">
+            <h3 class="benefit-title">Parking privado</h3>
+            <p>Tu plaza, reservada. Llegas, apartas y desapareces adentro.</p>
+          </div>
         </div>
-        <div class="pillar reveal reveal-delay-3">
-          <span class="pillar-num" aria-hidden="true">◇</span>
-          <h3 class="pillar-title">La Mesa Larga</h3>
-          <p class="pillar-text">El Mediterráneo une a la gente de formas inesperadas. Aquí hemos visto nacer amistades que empezaron con una tarde junto a la piscina.</p>
+        <div class="benefit reveal reveal-delay-1">
+          <div class="benefit-num"><span class="benefit-star">✦</span><span class="benefit-n">04</span></div>
+          <div class="benefit-body">
+            <h3 class="benefit-title">Yoga al amanecer</h3>
+            <p>Sesiones privadas en el jardín con instructores locales seleccionados. El mejor comienzo para un día sin prisa.</p>
+          </div>
+        </div>
+        <div class="benefit reveal">
+          <div class="benefit-num"><span class="benefit-star">✦</span><span class="benefit-n">05</span></div>
+          <div class="benefit-body">
+            <h3 class="benefit-title">La Cena de La Sal</h3>
+            <p>Una vez al año, invitamos a nuestros huéspedes más cercanos a una cena privada con un chef de la Costa Blanca. Una noche que no se anuncia — se recibe.</p>
+          </div>
+        </div>
+        <div class="benefit reveal reveal-delay-1">
+          <div class="benefit-num"><span class="benefit-star">✦</span><span class="benefit-n">06</span></div>
+          <div class="benefit-body">
+            <h3 class="benefit-title">Tu celebración, nuestra casa</h3>
+            <p>Cumpleaños, aniversarios, bodas íntimas. La quinta se convierte en tuya. Coordinamos cada detalle — el espacio, la mesa, el chef — para que tú solo tengas que aparecer.</p>
+          </div>
         </div>
       </div>
     </div>
