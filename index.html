@@ -210,6 +210,66 @@
       font-weight: 300;
     }
 
+    .hero-sub {
+      font-family: var(--sans);
+      font-size: clamp(0.78rem, 1.2vw, 0.9rem);
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(250, 247, 242, 0.72);
+      margin-top: 1.5rem;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2.2rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-cta-primary {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--dark-text);
+      background: var(--accent-warm);
+      border: 1px solid var(--accent-warm);
+      padding: 0.85rem 2rem;
+      transition: all 0.35s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .hero-cta-primary:hover {
+      background: transparent;
+      border-color: rgba(250, 247, 242, 0.6);
+    }
+
+    .hero-cta-secondary {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(250, 247, 242, 0.75);
+      background: transparent;
+      border: 1px solid rgba(250, 247, 242, 0.3);
+      padding: 0.85rem 2rem;
+      transition: all 0.35s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .hero-cta-secondary:hover {
+      color: var(--dark-text);
+      border-color: rgba(250, 247, 242, 0.7);
+    }
+
     .hero-scroll {
       position: absolute;
       bottom: 3.5rem;
@@ -1118,6 +1178,11 @@
       <h1 class="hero-headline">
         Refugio mediterráneo<br><em>entre pinos y el mar</em>
       </h1>
+      <p class="hero-sub">Estancias privadas en una villa mediterránea diseñada para descansar sin prisa, con vistas abiertas, jardines y servicio atento.</p>
+      <div class="hero-ctas">
+        <a href="#reserve" class="hero-cta-primary">Solicitar disponibilidad</a>
+        <a href="#alojamiento" class="hero-cta-secondary">Descubrir la propiedad</a>
+      </div>
     </div>
 
     <div class="hero-scroll" aria-hidden="true">
