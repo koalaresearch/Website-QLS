@@ -503,6 +503,28 @@
 
     .aloj-shared-dot { color: var(--accent); }
 
+    .aloj-secondary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem;
+      margin-top: 1rem;
+    }
+
+    .aloj-secondary div {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+
+    .aloj-secondary img {
+      filter: brightness(0.93) saturate(0.88);
+      transition: transform 0.8s var(--transition), filter 0.5s ease;
+    }
+
+    .aloj-secondary div:hover img {
+      transform: scale(1.05);
+      filter: brightness(1) saturate(1);
+    }
+
     /* ─── CLUB QUINTA ────────────────────────────────── */
     #club {
       background: var(--dark-bg);
@@ -1185,7 +1207,7 @@
 
         <article class="aloj-card reveal">
           <div class="aloj-img">
-            <img src="images/6.webp" alt="Apartamento Sal — terraza privada con jardín" loading="lazy" />
+            <img src="images/1.webp" alt="Apartamento Sal — sala con chimenea" loading="lazy" />
           </div>
           <div class="aloj-body">
             <span class="aloj-type">Apartamento</span>
@@ -1210,7 +1232,7 @@
 
         <article class="aloj-card reveal reveal-delay-2">
           <div class="aloj-img">
-            <img src="images/9.webp" alt="Apartamento Montgó — terraza amplia con jardín" loading="lazy" />
+            <img src="images/16.webp" alt="Apartamento Montgó — sala de estar" loading="lazy" />
           </div>
           <div class="aloj-body">
             <span class="aloj-type">Apartamento</span>
@@ -1230,6 +1252,14 @@
                 <span class="aloj-fact-value">Privada</span>
               </li>
             </ul>
+            <div class="aloj-secondary">
+              <div>
+                <img src="images/15.webp" alt="Dormitorio Montgó" loading="lazy" />
+              </div>
+              <div>
+                <img src="images/baño.webp" alt="Baño Montgó" loading="lazy" />
+              </div>
+            </div>
           </div>
         </article>
 
