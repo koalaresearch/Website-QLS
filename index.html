@@ -150,6 +150,16 @@
       overflow: hidden;
     }
 
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60%;
+      background: linear-gradient(to top, rgba(0,0,0,0.55), transparent);
+      pointer-events: none;
+      z-index: 1;
+    }
+
     .hero-image {
       position: absolute;
       inset: 0;
@@ -183,6 +193,7 @@
       text-align: center;
       width: 90%;
       max-width: 760px;
+      z-index: 2;
     }
 
     .hero-eyebrow {
