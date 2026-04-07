@@ -595,14 +595,22 @@
     .pillar:hover { background: rgba(250, 247, 242, 0.03); }
 
     .pillar-num {
-      font-family: var(--serif);
-      font-size: 3rem;
-      font-weight: 300;
+      font-size: 1.6rem;
       color: var(--accent-warm);
-      opacity: 0.5;
+      opacity: 0.75;
       line-height: 1;
       margin-bottom: 1.5rem;
       display: block;
+    }
+
+    .club-divider {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 4rem;
+      color: var(--accent-warm);
+      font-size: 0.9rem;
+      opacity: 0.5;
     }
 
     .pillar-title {
@@ -1298,24 +1306,28 @@
         </p>
       </div>
 
+      <div class="club-divider reveal" aria-hidden="true">
+        <span>✦</span><span>✧</span><span>◆</span><span>◇</span>
+      </div>
+
       <div class="club-pillars">
         <div class="pillar reveal">
-          <span class="pillar-num">01</span>
+          <span class="pillar-num" aria-hidden="true">✦</span>
           <h3 class="pillar-title">Prioridad Silenciosa</h3>
           <p class="pillar-text">Las habitaciones de temporada se reservan para ti antes de abrirse al mundo. Tu estancia empieza desde el primer mensaje.</p>
         </div>
         <div class="pillar reveal reveal-delay-1">
-          <span class="pillar-num">02</span>
+          <span class="pillar-num" aria-hidden="true">✧</span>
           <h3 class="pillar-title">Preferencias Vivas</h3>
           <p class="pillar-text">Tus rituales, tus horas, tus pequeñas certezas, guardadas con cuidado desde la primera vez que cruzaste la puerta.</p>
         </div>
         <div class="pillar reveal reveal-delay-2">
-          <span class="pillar-num">03</span>
+          <span class="pillar-num" aria-hidden="true">◆</span>
           <h3 class="pillar-title">Momentos Curados</h3>
           <p class="pillar-text">Desde uniones íntimas y aniversarios hasta cenas privadas al atardecer. Acceso fuera de temporada y experiencias costeras a medida, para convertir cada celebración en un legado personal, solo para miembros.</p>
         </div>
         <div class="pillar reveal reveal-delay-3">
-          <span class="pillar-num">04</span>
+          <span class="pillar-num" aria-hidden="true">◇</span>
           <h3 class="pillar-title">La Mesa Larga</h3>
           <p class="pillar-text">Encuentro anual de los huéspedes más cercanos a Quinta La Sal — una cena íntima que celebra la comunidad que nuestra propiedad ha reunido en silencio.</p>
         </div>
