@@ -603,111 +603,130 @@
       filter: brightness(1) saturate(1);
     }
 
-    /* ─── CLUB QUINTA ────────────────────────────────── */
+    /* ─── CLUB LA SAL ────────────────────────────────── */
     #club {
       background: #1a1610;
       color: #f5f0e8;
-      padding: 9rem 2rem;
+      display: flex;
+      min-height: 380px;
+      overflow: hidden;
     }
 
-    .club-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .club-header {
-      max-width: 680px;
-      margin-bottom: 6rem;
+    .club-left {
+      width: 30%;
+      min-width: 240px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.9rem;
+      padding: 3rem;
+      border-right: 1px solid #3a2e24;
     }
 
     .club-label {
       font-family: var(--sans);
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: #c9a96e;
       font-weight: 500;
-      display: block;
-      margin-bottom: 1.2rem;
     }
 
     .club-title {
       font-family: var(--serif);
-      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-size: clamp(1.8rem, 2.5vw, 2.6rem);
       font-weight: 300;
       line-height: 1.1;
       color: #f5f0e8;
-      margin-bottom: 1rem;
     }
 
     .club-subtitle {
       font-family: var(--serif);
       font-style: italic;
-      font-size: clamp(1rem, 2vw, 1.3rem);
+      font-size: 0.88rem;
+      color: rgba(245, 240, 232, 0.6);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .club-btn {
+      display: inline-block;
+      margin-top: 0.4rem;
+      padding: 0.55rem 1.1rem;
+      border: 1px solid #c9a96e;
       color: #c9a96e;
-      font-weight: 300;
-      margin-bottom: 1.5rem;
+      background: transparent;
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      align-self: flex-start;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
-    .club-desc {
-      color: rgba(245, 240, 232, 0.65);
-      font-weight: 300;
+    .club-btn:hover {
+      background: #c9a96e;
+      color: #1a1610;
     }
 
-    .club-benefits {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
+    .club-right {
+      flex: 1;
+      display: flex;
+      align-items: stretch;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      padding: 3rem 3rem 3rem 0;
     }
 
-    .benefit {
-      padding: 3.5rem 3rem 3.5rem 0;
-      border-top: 1px solid rgba(245, 240, 232, 0.1);
-      display: grid;
-      grid-template-columns: 90px 1fr;
-      gap: 2rem;
-      align-items: start;
+    .club-right::-webkit-scrollbar { display: none; }
+
+    .benefit-card {
+      width: 260px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0 2.5rem;
+      border-right: 1px solid #3a2e24;
     }
 
-    .benefit:nth-child(even) {
-      padding-left: 3rem;
-      padding-right: 0;
-      border-left: 1px solid rgba(245, 240, 232, 0.1);
-    }
+    .benefit-card:first-child { padding-left: 3rem; }
+    .benefit-card:last-child  { border-right: none; padding-right: 3rem; }
 
     .benefit-num {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.2rem;
-      padding-top: 0.15rem;
+      align-items: baseline;
+      gap: 0.35rem;
     }
 
     .benefit-star {
       color: #c9a96e;
-      font-size: 0.85rem;
-      line-height: 1;
+      font-size: 0.75rem;
     }
 
     .benefit-n {
       font-family: var(--serif);
-      font-size: 3rem;
+      font-size: 1.4rem;
       font-weight: 300;
-      color: #8a7a6a;
-      line-height: 1;
+      color: #c9a96e;
     }
 
     .benefit-title {
       font-family: var(--serif);
-      font-style: italic;
-      font-size: 1.2rem;
-      font-weight: 400;
+      font-size: 1rem;
+      font-weight: 500;
+      font-style: normal;
       color: #f5f0e8;
-      margin-bottom: 0.6rem;
     }
 
-    .benefit p {
-      color: rgba(245, 240, 232, 0.62);
+    .benefit-card p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: #a09080;
       font-weight: 300;
     }
 
@@ -1100,7 +1119,7 @@
 
     /* ─── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 1024px) {
-      .club-pillars { grid-template-columns: repeat(2, 1fr); }
+      /* club layout: horizontal scroll preserved at 1024px */
       .amenities-grid { grid-template-columns: repeat(2, 1fr); }
 
       .amenity-item:nth-child(4n) { border-right: 1px solid rgba(44, 44, 42, 0.1); }
@@ -1125,9 +1144,9 @@
       }
       .gi-1 { grid-column: 1 / -1; aspect-ratio: 16/9; }
 
-      .club-benefits { grid-template-columns: 1fr 1fr; }
-      .benefit { padding: 2.5rem 1.5rem 2.5rem 0; grid-template-columns: 70px 1fr; }
-      .benefit:nth-child(even) { padding-left: 1.5rem; }
+      #club { flex-direction: column; min-height: auto; }
+      .club-left { width: 100%; border-right: none; border-bottom: 1px solid #3a2e24; padding: 2.5rem 2rem; }
+      .club-right { padding: 2rem 0 2rem 2rem; }
 
       #location { grid-template-columns: 1fr; }
       .location-text { padding: 5rem 2rem; }
@@ -1148,7 +1167,7 @@
       #statement    { padding: 6rem 2rem; }
       #gallery      { padding-bottom: 5rem; }
       #alojamiento  { padding: 5rem 2rem; }
-      #club         { padding: 5rem 2rem; }
+      /* #club layout handled above */
       #amenities    { padding: 5rem 2rem; }
       #reserve      { padding: 5rem 2rem; }
 
@@ -1157,8 +1176,7 @@
     }
 
     @media (max-width: 480px) {
-      .club-benefits { grid-template-columns: 1fr; }
-      .benefit:nth-child(even) { border-left: none; padding-left: 0; }
+      .benefit-card { width: 220px; }
       .amenities-grid { grid-template-columns: 1fr; }
       .amenity-item:nth-child(2n) { border-right: 1px solid rgba(44, 44, 42, 0.1); }
       .amenity-item { border-right: none !important; }
@@ -1388,57 +1406,42 @@
        CLUB LA SAL
   ─────────────────────────────────────────────────── -->
   <section id="club" aria-label="Membresía Club La Sal">
-    <div class="club-inner">
-      <div class="club-header reveal">
-        <span class="club-label">Membresía</span>
-        <h2 class="club-title">Club La Sal</h2>
-        <p class="club-subtitle">Solo para quienes ya conocen el camino de vuelta.</p>
-        <p class="club-desc">Una membresía pensada para huéspedes que repiten. Sin formularios, sin puntos. Solo beneficios reales para quienes han elegido volver.</p>
+    <div class="club-left reveal">
+      <span class="club-label">Para quienes regresan</span>
+      <h2 class="club-title">Club La Sal</h2>
+      <p class="club-subtitle">Solo para quienes ya conocen el camino de vuelta.</p>
+      <a href="#reserve" class="club-btn">Solicitar membresía →</a>
+    </div>
+    <div class="club-right">
+      <div class="benefit-card">
+        <div class="benefit-num"><span class="benefit-star">✦</span><span class="benefit-n">01</span></div>
+        <h3 class="benefit-title">Reserva anticipada</h3>
+        <p>Las fechas de verano se abren para ti antes que para nadie. En temporada alta, tu sitio ya está guardado.</p>
       </div>
-
-      <div class="club-benefits">
-        <div class="benefit reveal">
-          <div class="benefit-num"><span class="benefit-star">✦</span><span class="benefit-n">01</span></div>
-          <div class="benefit-body">
-            <h3 class="benefit-title">Reserva anticipada</h3>
-            <p>Las fechas de verano se abren para ti antes que para nadie. En temporada alta, tu sitio ya está guardado.</p>
-          </div>
-        </div>
-        <div class="benefit reveal reveal-delay-1">
-          <div class="benefit-num"><span class="benefit-star">✦</span><span class="benefit-n">02</span></div>
-          <div class="benefit-body">
-            <h3 class="benefit-title">Desayuno en terraza</h3>
-            <p>Cada mañana, servido donde más te guste. En tu terraza privada, entre los pinos, sin horarios estrictos.</p>
-          </div>
-        </div>
-        <div class="benefit reveal">
-          <div class="benefit-num"><span class="benefit-star">✦</span><span class="benefit-n">03</span></div>
-          <div class="benefit-body">
-            <h3 class="benefit-title">Parking privado</h3>
-            <p>Tu plaza, reservada. Llegas, apartas y desapareces adentro.</p>
-          </div>
-        </div>
-        <div class="benefit reveal reveal-delay-1">
-          <div class="benefit-num"><span class="benefit-star">✦</span><span class="benefit-n">04</span></div>
-          <div class="benefit-body">
-            <h3 class="benefit-title">Yoga al amanecer</h3>
-            <p>Sesiones privadas en el jardín con instructores locales seleccionados. El mejor comienzo para un día sin prisa.</p>
-          </div>
-        </div>
-        <div class="benefit reveal">
-          <div class="benefit-num"><span class="benefit-star">✦</span><span class="benefit-n">05</span></div>
-          <div class="benefit-body">
-            <h3 class="benefit-title">La Cena de La Sal</h3>
-            <p>Una vez al año, invitamos a nuestros huéspedes más cercanos a una cena privada con un chef de la Costa Blanca. Una noche que no se anuncia — se recibe.</p>
-          </div>
-        </div>
-        <div class="benefit reveal reveal-delay-1">
-          <div class="benefit-num"><span class="benefit-star">✦</span><span class="benefit-n">06</span></div>
-          <div class="benefit-body">
-            <h3 class="benefit-title">Tu celebración, nuestra casa</h3>
-            <p>Cumpleaños, aniversarios, bodas íntimas. La quinta se convierte en tuya. Coordinamos cada detalle — el espacio, la mesa, el chef — para que tú solo tengas que aparecer.</p>
-          </div>
-        </div>
+      <div class="benefit-card">
+        <div class="benefit-num"><span class="benefit-star">✦</span><span class="benefit-n">02</span></div>
+        <h3 class="benefit-title">Desayuno en terraza</h3>
+        <p>Cada mañana, servido donde más te guste. En tu terraza privada, entre los pinos, sin horarios estrictos.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num"><span class="benefit-star">✦</span><span class="benefit-n">03</span></div>
+        <h3 class="benefit-title">Parking privado</h3>
+        <p>Tu plaza, reservada. Llegas, apartas y desapareces adentro.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num"><span class="benefit-star">✦</span><span class="benefit-n">04</span></div>
+        <h3 class="benefit-title">Yoga al amanecer</h3>
+        <p>Sesiones privadas en el jardín con instructores locales seleccionados. El mejor comienzo para un día sin prisa.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num"><span class="benefit-star">✦</span><span class="benefit-n">05</span></div>
+        <h3 class="benefit-title">La Cena de La Sal</h3>
+        <p>Una vez al año, invitamos a nuestros huéspedes más cercanos a una cena privada con un chef de la Costa Blanca. Una noche que no se anuncia — se recibe.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num"><span class="benefit-star">✦</span><span class="benefit-n">06</span></div>
+        <h3 class="benefit-title">Tu celebración, nuestra casa</h3>
+        <p>Cumpleaños, aniversarios, bodas íntimas. La quinta se convierte en tuya. Coordinamos cada detalle — el espacio, la mesa, el chef — para que tú solo tengas que aparecer.</p>
       </div>
     </div>
   </section>
